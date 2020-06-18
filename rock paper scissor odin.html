@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // gameplay 
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function gamePlay() {
+
+            function promptPlayer() {
+                let playerSelection = prompt("yourmove").toLowerCase();
+                //   gets player input and makes it lowercase
+
+                if (playerSelection === "") {
+                    alert('Please make a move.');
+                    prompt();
+                }
+                return playerSelection;
+            }
+
+            let playerSelection = promptPlayer();
+
+
+
+            // get computer input   
+            let gameSelections = ["rock", "paper", "scissor"];
+
+            let computerSelection = function getRandomSelection() {
+                return gameSelections[Math.floor(Math.random() * 3)];
+            }
+
+
+
+            computerSelection = computerSelection();
+
+            // spent a long time here.didn't figured out that even if i get the computerse value here by consolelog, it changes every time function get called by the ifelse statement.
+            // by giving the computerse value to the computerselection variable, I managed to avoid that.
+            // so i think its best to give a function's value to a variable if that function gets called more than one time
+
+            alert("Computer Played " + computerSelection);
+
+            if (computerSelection === playerSelection) {
+                alert("match draw");
+            } else if ((computerSelection === "rock" && playerSelection === "paper") || (computerSelection === "paper" && playerSelection === "scissor") || (computerSelection === "scissor" && playerSelection === "rock")) {
+                alert("you won");
+                playerScore++;
+            } else {
+                alert("you lose");
+                computerScore++;
+            }
+            return playerScore;
+            return computerScore;
+        }
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                gamePlay();
+                playerScore += 0;
+                computerScore += 0;
+            }
+            console.log("Player Scopre = " + playerScore, "Computer Score = " + computerScore);
+            playerScore = 0;
+            computerScore = 0;
+        }
+
+
+
+    </script>
+</body>
+
+</html>
